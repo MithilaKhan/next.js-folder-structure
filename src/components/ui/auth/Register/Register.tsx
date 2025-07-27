@@ -1,7 +1,8 @@
 "use client";
 
+import SocialLogin from "@/components/shared/SocialLogin";
 import TextInput from "@/components/shared/TextInput";
-import { Checkbox, ConfigProvider, Form, Input } from "antd";
+import { ConfigProvider, Divider, Form, Input } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -25,12 +26,9 @@ const Register: React.FC = () => {
 
   return (
     <div>
-      <div className="mb-6">
-        <h1 className="text-[25px] font-semibold mb-2">Register Now</h1>
-        <p className="text-[#11D279]">
-          To proceed with your application, we first need some information from
-          you
-        </p>
+      <div className=" mb-10 flex flex-col items-center justify-center ">
+        <h1 className="text-[24px] font-semibold mb-2">Sign up</h1>
+        <p className="text-sm font-normal "> Please Enter Your Personal Data</p>
       </div>
       <ConfigProvider
         theme={{
@@ -39,7 +37,7 @@ const Register: React.FC = () => {
           },
           components: {
             Input: {
-            //   borderColor: "#d9d9d9",  
+              //   borderColor: "#d9d9d9",  
               hoverBorderColor: "#d9d9d9",
             },
           },
@@ -48,11 +46,9 @@ const Register: React.FC = () => {
         <Form onFinish={onFinish} layout="vertical">
           <TextInput name="name" label="Full Name" />
           <TextInput name="email" label="Email" />
-          <TextInput name="contact" label="Contact Number" />
-
           <Form.Item
             name="password"
-            label="Password"
+            label={<p className="text-[#4E4E4E] text-[16px]">Password</p>}
             rules={[
               {
                 required: true,
@@ -63,13 +59,14 @@ const Register: React.FC = () => {
           >
             <Input.Password
               placeholder="Enter password"
-              className="border border-gray-300 h-[50px] bg-white rounded-lg"
+              className="border border-gray-300 h-[48px] bg-white rounded-full"
+              style={{ borderRadius: "50px" }}
             />
           </Form.Item>
 
           <Form.Item
             name="confirm_password"
-            label="Confirm Password"
+            label={<p className="text-[#4E4E4E] text-[16px]">Confirm Password</p>}
             dependencies={["password"]}
             hasFeedback
             rules={[
@@ -92,45 +89,39 @@ const Register: React.FC = () => {
           >
             <Input.Password
               placeholder="Confirm password"
-              className="border border-gray-300 h-[50px] bg-white rounded-lg"
+              className="border border-gray-300 h-[48px] bg-white rounded-full"
+              style={{ borderRadius: "50px" }}
             />
-          </Form.Item>
-
-          <Form.Item
-            name="agree"
-            valuePropName="checked"
-            rules={[
-              {
-                validator(_, value) {
-                  return value
-                    ? Promise.resolve()
-                    : Promise.reject(new Error("You must agree to continue!"));
-                },
-              },
-            ]}
-          >
-            <Checkbox>
-              I agree with terms of service and privacy policy
-            </Checkbox>
           </Form.Item>
 
           <Form.Item>
             <button
               type="submit"
-              className="w-full h-[45px] text-white font-medium text-lg bg-primary rounded-lg flex items-center justify-center mt-4"
+              className="w-full h-[45px] text-white font-medium text-lg bg-primary rounded-full flex items-center justify-center mt-4"
             >
               Sign up
             </button>
           </Form.Item>
         </Form>
+
+      </ConfigProvider>
+      <ConfigProvider
+        theme={{
+          token: {
+            colorText: "#636363",
+          },
+        }}
+      >
+        <Divider className="font-normal text-gray-500">or</Divider>
       </ConfigProvider>
 
-      <div className="flex items-center justify-center gap-1 py-4">
+      <SocialLogin />
+
+      <div className=" flex items-center justify-center gap-1 py-4">
         <p className="text-[#636363]">Have an account?</p>
-        <Link href="/login" className="text-[#1854F9] font-semibold">
-          Log in
-        </Link>
+        <Link href="/login" className="text-[#1854F9] font-semibold" > Sign Up</Link>
       </div>
+
     </div>
   );
 };

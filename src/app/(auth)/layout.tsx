@@ -13,8 +13,8 @@ const layout = ({children}: {children: React.ReactNode}) => {
         
         <div
             style={{
-                backgroundImage: `url('/safety.png')`,
-                backgroundPosition: 'center',
+                backgroundImage: `url('/authBg.svg')`,
+                backgroundPosition: 'bottom right',
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
               
@@ -28,16 +28,8 @@ const layout = ({children}: {children: React.ReactNode}) => {
         ></div>
     
      
-        <div
-            style={{
-                background: '#ffffff',
-                padding: 30,
-                borderRadius: 10,
-                width: 570,
-                position: 'relative',
-                zIndex: 2,
-            }} 
-            className={` ${poppins.className}  shadow-xl`}
+        <div 
+            className={` ${poppins.className}  shadow-xl bg-[#FEFEFEE5]/90 p-8 rounded-lg w-[670px] relative z-10 `}
         >
            {children}
         </div>

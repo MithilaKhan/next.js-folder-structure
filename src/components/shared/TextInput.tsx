@@ -23,7 +23,8 @@ const TextInput: React.FC<{ name: string; label: string }> = ({ name, label }) =
             border: "1px solid #d9d9d9",
             outline: "none",
             boxShadow: "none",
-            backgroundColor: "white",
+            backgroundColor: "white", 
+            borderRadius: "50px",
           }}
       />
 
